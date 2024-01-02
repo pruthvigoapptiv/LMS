@@ -58,71 +58,73 @@ const AdmissionStatus = () => {
       <Navbar />
       <DashboardContainer>
         <SideBar />
-        <div className="mainOmrBox">
-          <h1>Student Status Section</h1>
-          <MDBTable className="admTableBox">
-            <MDBTableHead>
-              <tr>
-                {admissionsData.length > 0 &&
-                  Object.keys(admissionsData[0].education).map((key) => (
-                    <th key={key} scope="col">
-                      Education {key}
-                    </th>
-                  ))}
-                <th scope="col">Full Name</th>
-                <th scope="col">Email</th>
-
-                <th scope="col">Parent Phone</th>
-
-                <th scope="col">Mobile</th>
-
-                <th scope="col">Course Name</th>
-
-                <th scope="col">Course Duration</th>
-                <th scope="col">Course Fees</th>
-                <th scope="col">Status</th>
-                <th scope="col">Admit</th>
-              </tr>
-            </MDBTableHead>
-            <MDBTableBody>
-              {admissionsData.map((item, index) => (
-                <tr key={index}>
-                  {item.education &&
-                    Object.values(item.education).map((value, subIndex) => (
-                      <td key={subIndex}>{value}</td>
+        <div className="mainAdmBox">
+          <h1>Admission Status </h1>
+          <div >
+            <MDBTable>
+              <MDBTableHead>
+                <tr>
+                  {admissionsData.length > 0 &&
+                    Object.keys(admissionsData[0].education).map((key) => (
+                      <th key={key} scope="col">
+                        Education {key}
+                      </th>
                     ))}
-                  <td>{item.fullname}</td>
-                  <td>{item.email}</td>
+                  <th scope="col">Full Name</th>
+                  <th scope="col">Email</th>
 
-                  <td>{item.parentphone}</td>
+                  <th scope="col">Parent Phone</th>
 
-                  <td>{item.mobile}</td>
+                  <th scope="col">Mobile</th>
 
-                  <td>{item.course && item.course.coursename}</td>
+                  <th scope="col">Course Name</th>
 
-                  <td>{item.course && item.course.duration}</td>
-                  <td>{item.course && item.course.fees}</td>
-                  <td>{item.status}</td>
-                  <td>
-                    <button
-                      onClick={() => handleAdmitButtonClick(item._id)}
-                      disabled={item.status === "Admitted"}
-                      style={{
-                        backgroundColor:
-                          item.status === "Admitted" ? "green" : "red",
-                        cursor:
-                          item.status === "Admitted"
-                            ? "not-allowed"
-                            : "pointer",
-                      }}
-                    >
-                      {item.status === "Admitted" ? "Admitted" : "Admit"}
-                    </button>
-                  </td>
+                  <th scope="col">Course Duration</th>
+                  <th scope="col">Course Fees</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Admit</th>
                 </tr>
-              ))}
-            </MDBTableBody>
-          </MDBTable>
+              </MDBTableHead>
+              <MDBTableBody>
+                {admissionsData.map((item, index) => (
+                  <tr key={index}>
+                    {item.education &&
+                      Object.values(item.education).map((value, subIndex) => (
+                        <td key={subIndex}>{value}</td>
+                      ))}
+                    <td>{item.fullname}</td>
+                    <td>{item.email}</td>
+
+                    <td>{item.parentphone}</td>
+
+                    <td>{item.mobile}</td>
+
+                    <td>{item.course && item.course.coursename}</td>
+
+                    <td>{item.course && item.course.duration}</td>
+                    <td>{item.course && item.course.fees}</td>
+                    <td>{item.status}</td>
+                    <td>
+                      <button
+                        onClick={() => handleAdmitButtonClick(item._id)}
+                        disabled={item.status === "Admitted"}
+                        style={{
+                          backgroundColor:
+                            item.status === "Admitted" ? "green" : "red",
+                          cursor:
+                            item.status === "Admitted"
+                              ? "not-allowed"
+                              : "pointer",
+                        }}
+                      >
+                        {item.status === "Admitted" ? "Admitted" : "Admit"}
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </MDBTableBody>
+            </MDBTable>
+          </div>
         </div>
       </DashboardContainer>
       {/* Render the Modal component */}
