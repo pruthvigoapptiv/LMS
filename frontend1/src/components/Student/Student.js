@@ -6,6 +6,8 @@ import Navbar from "../Navbar/Navbar";
 import SideBar from "../SideBar/SideBar";
 import { useNavigate } from "react-router-dom";
 import './Student.css'
+import Button from "react-bootstrap/Button";
+
 const Student = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
@@ -96,9 +98,12 @@ const Student = () => {
                     </td>
                     <td>{item.applicationId.status}</td>
                     <td>
-                      <button onClick={() => handleViewButtonClick(item._id)}>
+                      <Button
+                        onClick={() => handleViewButtonClick(item._id)}
+                        variant="success"
+                      >
                         View
-                      </button>
+                      </Button>
                     </td>
                   </tr>
                 ))}

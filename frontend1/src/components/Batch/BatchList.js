@@ -4,6 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import SideBar from "../SideBar/SideBar";
 import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
 import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 const DashboardContainer = styled.div`
   display: flex;
 `;
@@ -68,7 +69,7 @@ const BatchList = () => {
                   <td>{item.course && item.course.coursename}</td>
                   <td>{item.teacher && item.teacher.name}</td>
                   <td>
-                    <button>Edit</button>
+                    <Button variant="success">Edit</Button>
                   </td>
                 </tr>
               ))}

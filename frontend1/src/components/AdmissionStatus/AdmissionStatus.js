@@ -5,6 +5,8 @@ import styled from "styled-components";
 import Navbar from "../Navbar/Navbar";
 import SideBar from "../SideBar/SideBar";
 import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
+import Button from "react-bootstrap/Button";
+
 import StudentAdmitModal from "../studentModal.js/studentModal";
 import './StudentStatus.css'
 import { useNavigate } from "react-router-dom";
@@ -60,7 +62,7 @@ const AdmissionStatus = () => {
         <SideBar />
         <div className="mainAdmBox">
           <h1>Admission Status </h1>
-          <div >
+          <div>
             <MDBTable>
               <MDBTableHead>
                 <tr>
@@ -105,7 +107,8 @@ const AdmissionStatus = () => {
                     <td>{item.course && item.course.fees}</td>
                     <td>{item.status}</td>
                     <td>
-                      <button
+                      <Button
+                        variant="success"
                         onClick={() => handleAdmitButtonClick(item._id)}
                         disabled={item.status === "Admitted"}
                         style={{
@@ -118,7 +121,7 @@ const AdmissionStatus = () => {
                         }}
                       >
                         {item.status === "Admitted" ? "Admitted" : "Admit"}
-                      </button>
+                      </Button>
                     </td>
                   </tr>
                 ))}
