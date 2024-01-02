@@ -6,20 +6,28 @@ import Navbar from "../Navbar/Navbar";
 import SideBar from "../SideBar/SideBar";
 import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
 import Button from "react-bootstrap/Button";
-
 import StudentAdmitModal from "../studentModal.js/studentModal";
 import './StudentStatus.css'
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 const DashboardContainer = styled.div`
   display: flex;
 `;
 const AdmissionStatus = () => {
+const { pathname } = useLocation();
+
+// Automatically scrolls to top whenever pathname changes
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, [pathname]);
+  
   const [admissionsData, setAdmissionsData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedStudentId, setSelectedStudentId] = useState(null);
   const [currApplicationId, setCurrApplicationId] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
+  
     if (!localStorage.getItem("authToken")) {
       navigate("/");
     }
@@ -57,6 +65,7 @@ const AdmissionStatus = () => {
 
   return (
     <>
+    
       <Navbar />
       <DashboardContainer>
         <SideBar />

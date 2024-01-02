@@ -6,7 +6,14 @@ import Button from "react-bootstrap/Button";
 import { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 const StudentAdmission = () => {
+   const { pathname } = useLocation();
+
+   // Automatically scrolls to top whenever pathname changes
+   useEffect(() => {
+     window.scrollTo(0, 0);
+   }, [pathname]);
   const navigate = useNavigate();
   const [courseInterested, setcourseInterested] = useState("");
   const [formData, setFormData] = useState({

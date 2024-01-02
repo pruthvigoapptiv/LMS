@@ -4,12 +4,20 @@ import Navbar from "../Navbar/Navbar";
 import SideBar from "../SideBar/SideBar";
 import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 import Button from "react-bootstrap/Button";
 const DashboardContainer = styled.div`
   display: flex;
 `;
 
 const BatchList = () => {
+  const { pathname } = useLocation();
+
+  // Automatically scrolls to top whenever pathname changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   const [batchesData, setBatchesData] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {

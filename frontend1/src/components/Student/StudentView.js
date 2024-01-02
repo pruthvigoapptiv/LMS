@@ -11,8 +11,15 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import firebase from "firebase/compat/app";
 import "firebase/compat/storage";
+import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 const StudentView = () => {
+   const { pathname } = useLocation();
+
+   // Automatically scrolls to top whenever pathname changes
+   useEffect(() => {
+     window.scrollTo(0, 0);
+   }, [pathname]);
   const [basicActive, setBasicActive] = useState("tab1");
   const [studentDetails, setStudentDetails] = useState({});
   const [image, setImage] = useState("");

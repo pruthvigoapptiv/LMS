@@ -7,8 +7,14 @@ import SideBar from "../SideBar/SideBar";
 import { useNavigate } from "react-router-dom";
 import './Student.css'
 import Button from "react-bootstrap/Button";
-
+import { useLocation } from "react-router-dom";
 const Student = () => {
+   const { pathname } = useLocation();
+
+   // Automatically scrolls to top whenever pathname changes
+   useEffect(() => {
+     window.scrollTo(0, 0);
+   }, [pathname]);
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [showModal, setShowModal] = useState(false);

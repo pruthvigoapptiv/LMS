@@ -5,8 +5,14 @@ import SideBar from "../SideBar/SideBar";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
-
+import { useLocation } from "react-router-dom";
 const TeacherRegistration = () => {
+   const { pathname } = useLocation();
+
+   // Automatically scrolls to top whenever pathname changes
+   useEffect(() => {
+     window.scrollTo(0, 0);
+   }, [pathname]);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
