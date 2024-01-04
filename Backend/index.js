@@ -32,6 +32,9 @@ mongoose
 login.initializeAdmin();
 
 // middleware
+app.get("/", (req, res) => {
+  res.json("hello this is the first page of the required output")
+})
 
 // router
 const loginRouter = require("./routes/loginRouter");
