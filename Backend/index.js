@@ -7,7 +7,13 @@ const mongoose = require("mongoose");
 const login = require("./controllers/loginController");
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://lms-backend-api.vercel.app/"],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // Connecting database
